@@ -1,4 +1,0 @@
---patch-module
-com.mythologi_explorer=_
---add-reads
-com.mythologi_explorer=ALL-UNNAMED
