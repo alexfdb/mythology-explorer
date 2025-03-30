@@ -1,0 +1,16 @@
+/* style.css */
+
+/* Estilo general para VBox */
+VBox {
+    -fx-background-color: #FAF0E6;
+}
+
+/* Estilo para los botones */
+Button {
+    -fx-background-color: #E4CBA7;
+}
+
+/* Separador */
+Separator {
+    -fx-background-color: #E4CBA7;
+}
