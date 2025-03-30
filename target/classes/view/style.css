@@ -6,11 +6,15 @@ VBox {
 }
 
 /* Estilo para los botones */
-Button {
-    -fx-background-color: #E4CBA7;
+Button:hover {
+    -fx-background-color: #D1B897; /* Color más oscuro cuando el mouse pasa por encima */
+}
+
+Button:pressed {
+    -fx-background-color: #BFA488; /* Color aún más oscuro cuando se presiona */
 }
 
 /* Separador */
-Separator {
+Separator .line {
     -fx-background-color: #E4CBA7;
 }
