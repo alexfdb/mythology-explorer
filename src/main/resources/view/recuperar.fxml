@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mythologi_explorer.controller.IniciarController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mythologi_explorer.controller.RecuperarController">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -29,12 +29,12 @@
             </Button>
             <VBox alignment="CENTER" prefHeight="50.0" prefWidth="180.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recuperar">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sesión">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -69,7 +69,7 @@
             <Insets top="20.0" />
          </VBox.margin>
       </TextField>
-      <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+      <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
@@ -85,22 +85,6 @@
          </VBox.margin>
       </Text>
       <Button minHeight="30.0" minWidth="100.0" mnemonicParsing="false" text="Enviar" textFill="WHITE">
-         <VBox.margin>
-            <Insets top="40.0" />
-         </VBox.margin>
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonCrear" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonCrearClick" text="Crear" textFill="WHITE">
-         <VBox.margin>
-            <Insets top="40.0" />
-         </VBox.margin>
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonRecuperar" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonRecuperarClick" text="Recuperar" textFill="WHITE">
          <VBox.margin>
             <Insets top="40.0" />
          </VBox.margin>

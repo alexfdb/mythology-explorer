@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
  * @author alexfdb
  * @version 1.0.0
  */
-public class CrearController extends PantallaController {
+public class RecuperarController extends PantallaController {
 
     @FXML
     private Button buttonExplorar;

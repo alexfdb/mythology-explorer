@@ -4,6 +4,7 @@ import com.mythologi_explorer.controller.pantalla.PantallaController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+
 /**
  * @author alexfdb
  * @version 1.0.0
@@ -16,6 +17,8 @@ public class IniciarController extends PantallaController {
     private Button buttonUsuario;
     @FXML
     private Button buttonCrear;
+    @FXML
+    private Button buttonRecuperar;
 
     /**
      * Cambia a la pantalla de explorar.
@@ -39,6 +42,14 @@ public class IniciarController extends PantallaController {
     @FXML
     public void buttonCrearClick() {
         pantallaCrear(buttonCrear);
+    }
+
+    /**
+     * Cambia a la pantalla de recuperar.
+     */
+    @FXML
+    public void buttonRecuperarClick() {
+        pantallaCrear(buttonRecuperar);
     }
 
 }
