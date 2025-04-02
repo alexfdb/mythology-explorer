@@ -1,14 +1,14 @@
 package com.mythologi_explorer.controller;
 
-import com.mythologi_explorer.Main;
+import com.mythologi_explorer.controller.pantalla.PantallaController;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-public class ExplorarController {
+/**
+ * @author alexfdb
+ * @version 1.0.0
+ */
+public class ExplorarController extends PantallaController {
 
     @FXML
     private Button buttonUsuario;
@@ -18,15 +18,7 @@ public class ExplorarController {
      */
     @FXML
     public void buttonUsuarioClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/iniciar.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 360, 640);
-            Stage stage = (Stage) buttonUsuario.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        pantallaIniciar(buttonUsuario);
     }
     
 }
