@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * @author alexfdb
  * @version 1.0.0
  */
-public class PantallaController {
+public abstract class PantallaController {
 
     /**
      * Cambia la pantalla por medio del boton a ejecutar y el path del fichero.

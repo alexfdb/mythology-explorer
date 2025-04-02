@@ -11,20 +11,20 @@ Button {
 }
 
 Button:hover {
-    -fx-background-color: #D1B897; /* Color más oscuro cuando el mouse pasa por encima */
+    -fx-background-color: #D1B897;
 }
 
 Button:pressed {
-    -fx-background-color: #BFA488; /* Color aún más oscuro cuando se presiona */
+    -fx-background-color: #BFA488;
 }
 
 /* Estilo para los campos de texto */
 TextField {
-    -fx-border-color: #E4CBA7; /* Color del borde */
+    -fx-border-color: #E4CBA7;
 }
 
 TextField:focused {
-    -fx-border-color: #D1B897; /* Color del borde cuando el campo de texto está enfocado */
+    -fx-border-color: #D1B897;
 }
 
 /* Separador */

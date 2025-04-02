@@ -11,10 +11,20 @@ import javafx.scene.control.Button;
 public class ExplorarController extends PantallaController {
 
     @FXML
+    private Button buttonExplorar;
+    @FXML
     private Button buttonUsuario;
 
     /**
-     * Cambia a la pantalla de inicio.
+     * Cambia a la pantalla de explorar.
+     */
+    @FXML
+    public void buttonExplorarClick() {
+        pantallaExplorar(buttonExplorar);
+    }
+
+    /**
+     * Cambia a la pantalla de iniciar.
      */
     @FXML
     public void buttonUsuarioClick() {

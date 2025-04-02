@@ -14,7 +14,7 @@
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0">
+            <Button fx:id="buttonExplorar" mnemonicParsing="false" onAction="#buttonExplorarClick" prefHeight="50.0" prefWidth="50.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

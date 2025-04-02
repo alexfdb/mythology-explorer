@@ -12,6 +12,8 @@ public class CrearController extends PantallaController {
 
     @FXML
     private Button buttonExplorar;
+    @FXML
+    private Button buttonUsuario;
     
     /**
      * Cambia a la pantalla de explorar.
@@ -19,6 +21,14 @@ public class CrearController extends PantallaController {
     @FXML
     public void buttonExplorarClick() {
         pantallaExplorar(buttonExplorar);
+    }
+
+    /**
+     * Cambia a la pantalla de iniciar.
+     */
+    @FXML
+    public void buttonUsuarioClick() {
+        pantallaIniciar(buttonUsuario);
     }
 
 }
