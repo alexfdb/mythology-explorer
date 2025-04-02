@@ -7,7 +7,7 @@ VBox {
 
 /* Estilo para los botones */
 Button {
-    -fx-background-color: #E4CBA7
+    -fx-background-color: #E4CBA7;
 }
 
 Button:hover {
@@ -16,6 +16,15 @@ Button:hover {
 
 Button:pressed {
     -fx-background-color: #BFA488; /* Color aún más oscuro cuando se presiona */
+}
+
+/* Estilo para los campos de texto */
+TextField {
+    -fx-border-color: #E4CBA7; /* Color del borde */
+}
+
+TextField:focused {
+    -fx-border-color: #D1B897; /* Color del borde cuando el campo de texto está enfocado */
 }
 
 /* Separador */

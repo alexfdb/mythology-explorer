@@ -1,10 +1,12 @@
 module com.mythologi_explorer {
-    requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.controls;
     requires org.controlsfx.controls;
     requires transitive javafx.graphics;
 
     exports com.mythologi_explorer;
+    exports com.mythologi_explorer.controller;
 
     opens com.mythologi_explorer to javafx.fxml;
+    opens com.mythologi_explorer.controller to javafx.fxml;
 }
