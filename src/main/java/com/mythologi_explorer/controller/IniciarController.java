@@ -49,7 +49,7 @@ public class IniciarController extends PantallaController {
      */
     @FXML
     public void buttonRecuperarClick() {
-        pantallaCrear(buttonRecuperar);
+        pantallaRecuperar(buttonRecuperar);
     }
 
 }
