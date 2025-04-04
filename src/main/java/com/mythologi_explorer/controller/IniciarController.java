@@ -71,10 +71,10 @@ public class IniciarController extends PantallaController {
             return;
         }
         if (!uManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText())) {
-            textMensaje.setText("Nombre o contraseña incorrectos");
+            textMensaje.setText("Credenciales incorrectas");
             return;
         }
-        textMensaje.setText("Inicio de sesión exitoso.");
+        textMensaje.setText("Credenciales correctas");
     }
 
     /**

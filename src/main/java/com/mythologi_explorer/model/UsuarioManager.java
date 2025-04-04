@@ -26,25 +26,27 @@ public class UsuarioManager extends DatabaseManager {
      * @return retorna el usuario si la consulta tiene exito.
      * @throws SQLException error controlado.
      */
-    private Usuario obtenerUsuario(String query) throws SQLException {
-        Usuario usuario = null;
-        if (query == null) {
-            return null;
-        }
-        try (PreparedStatement pStatement = conectar().prepareStatement(query);
-                ResultSet rSet = pStatement.executeQuery();) {
-
-            if (rSet.next()) {
-                String nombre = rSet.getString("nombre");
-                String contrasenia = rSet.getString("contrasenia");
-                String email = rSet.getString("email");
-                usuario = new Usuario(nombre, contrasenia, email);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return usuario;
-    }
+    /**
+     * private Usuario obtenerUsuario(String query) throws SQLException {
+     * Usuario usuario = null;
+     * if (query == null) {
+     * return null;
+     * }
+     * try (PreparedStatement pStatement = conectar().prepareStatement(query);
+     * ResultSet rSet = pStatement.executeQuery();) {
+     * 
+     * if (rSet.next()) {
+     * String nombre = rSet.getString("nombre");
+     * String contrasenia = rSet.getString("contrasenia");
+     * String email = rSet.getString("email");
+     * usuario = new Usuario(nombre, contrasenia, email);
+     * }
+     * } catch (Exception e) {
+     * e.printStackTrace();
+     * }
+     * return usuario;
+     * }
+     */
 
     /**
      * Crea un nuevo usuario.
@@ -56,8 +58,8 @@ public class UsuarioManager extends DatabaseManager {
         if (usuario == null) {
             return false;
         }
-        String sql = "INSERT INTO usuario(nombre, contrasenia, email) VALUES (?, ?, ?)";
-        try (PreparedStatement pStatement = conectar().prepareStatement(sql)) {
+        String query = "INSERT INTO usuario(nombre, contrasenia, email) VALUES (?, ?, ?)";
+        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, usuario.getNombre());
             pStatement.setString(2, usuario.getContrasenia());
             pStatement.setString(3, usuario.getEmail());
@@ -80,14 +82,38 @@ public class UsuarioManager extends DatabaseManager {
         if (nombre == null || contrasenia == null) {
             return false;
         }
-        String sql = "SELECT * FROM usuario WHERE nombre = ? AND contrasenia = ?";
-        try (PreparedStatement pStatement = conectar().prepareStatement(sql)) {
+        String query = "SELECT * FROM usuario WHERE nombre = ? AND contrasenia = ?";
+        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, contrasenia);
             try (ResultSet rSet = pStatement.executeQuery()) {
-                    return rSet.next();
+                return rSet.next();
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Recupera la cuenta del usuario.
+     * 
+     * @param nombre nombre del usuario.
+     * @param email  email del usuario.
+     * @return
+     */
+    public boolean recuperarCuenta(String nombre, String email) {
+        if (nombre == null || email == null) {
+            return false;
+        }
+        String query = "SELECT * FROM usuario WHERE nombre = ? AND email = ?";
+        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
+            pStatement.setString(1, nombre);
+            pStatement.setString(2, email);
+            try (ResultSet rSet = pStatement.executeQuery()) {
+                return rSet.next();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;

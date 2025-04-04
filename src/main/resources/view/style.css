@@ -23,8 +23,8 @@ TextField {
     -fx-border-color: #E4CBA7;
 }
 
-TextField:focused {
-    -fx-border-color: #D1B897;
+PasswordField {
+    -fx-border-color: #E4CBA7;
 }
 
 /* Separador */

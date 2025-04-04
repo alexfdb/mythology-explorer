@@ -64,7 +64,7 @@
             <Insets top="20.0" />
          </VBox.margin>
       </Text>
-      <TextField maxWidth="280.0" minHeight="30.0">
+      <TextField fx:id="textFieldNombre" maxWidth="280.0" minHeight="30.0">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
@@ -74,17 +74,17 @@
             <Insets top="20.0" />
          </VBox.margin>
       </Text>
-      <TextField maxWidth="280.0" minHeight="30.0">
+      <TextField fx:id="textFieldEmail" maxWidth="280.0" minHeight="30.0">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="textMensaje" strokeType="OUTSIDE" strokeWidth="0.0">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
       </Text>
-      <Button minHeight="30.0" minWidth="100.0" mnemonicParsing="false" text="Enviar" textFill="WHITE">
+      <Button fx:id="buttonEnviar" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonEnviarClick" text="Enviar" textFill="WHITE">
          <VBox.margin>
             <Insets top="40.0" />
          </VBox.margin>
