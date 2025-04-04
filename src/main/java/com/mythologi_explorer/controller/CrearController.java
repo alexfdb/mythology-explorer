@@ -10,6 +10,7 @@ import com.mythologi_explorer.model.UsuarioManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -26,7 +27,7 @@ public class CrearController extends PantallaController {
     @FXML
     private TextField textFieldNombre;
     @FXML
-    private TextField textFieldContrasenia;
+    private PasswordField textFieldContrasenia;
     @FXML
     private TextField textFieldEmail;
     @FXML

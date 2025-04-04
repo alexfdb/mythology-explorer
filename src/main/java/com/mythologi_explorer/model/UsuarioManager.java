@@ -49,7 +49,30 @@ public class UsuarioManager extends DatabaseManager {
      */
 
     /**
-     * Crea un nuevo usuario.
+     * Comprueba si el usuario ya existe.
+     * @param nombre nombre del usuario.
+     * @param email email del usuario.
+     * @return retorna true si el usuario existe.
+     */
+    public boolean usuarioExistente(String nombre, String email) {
+        if(nombre == null || email == null) {
+            return false;
+        }
+        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? email ?";
+        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
+            pStatement.setString(1, nombre);
+            pStatement.setString(2, email);
+            try (ResultSet rSet = pStatement.executeQuery()) {
+                return rSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Crea un usuario.
      * 
      * @param usuario usuario a crear.
      * @return retorna true si el usuario fue creado.
@@ -82,7 +105,7 @@ public class UsuarioManager extends DatabaseManager {
         if (nombre == null || contrasenia == null) {
             return false;
         }
-        String query = "SELECT * FROM usuario WHERE nombre = ? AND contrasenia = ?";
+        String query = "SELECT id FROM usuario WHERE nombre = ? AND contrasenia = ?";
         try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, contrasenia);
@@ -106,14 +129,14 @@ public class UsuarioManager extends DatabaseManager {
         if (nombre == null || email == null) {
             return false;
         }
-        String query = "SELECT * FROM usuario WHERE nombre = ? AND email = ?";
+        String query = "SELECT id FROM usuario WHERE nombre = ? AND email = ?";
         try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, email);
             try (ResultSet rSet = pStatement.executeQuery()) {
                 return rSet.next();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
