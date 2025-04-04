@@ -11,6 +11,7 @@ import com.mythologi_explorer.model.UsuarioManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * @author alexfdb
@@ -28,6 +29,8 @@ public class CrearController extends PantallaController {
     private TextField textFieldContrasenia;
     @FXML
     private TextField textFieldEmail;
+    @FXML
+    private Text textMensaje;
     @FXML
     private Button buttonEnviar;
 
@@ -64,23 +67,37 @@ public class CrearController extends PantallaController {
     @FXML
     public void buttonEnviarClick() {
         if (!validarCampos()) {
+            textMensaje.setText("Credenciales null o vacias");
             return;
         }
         if (!validarEmail()) {
+            textMensaje.setText("El formato del email es incorrecto");
             return;
         }
         Usuario usuario = new Usuario(textFieldNombre.getText(),
                 textFieldContrasenia.getText(),
                 textFieldEmail.getText());
         uManager.crearUsuario(usuario);
+        textMensaje.setText("Usuario registrado con exito");
     }
 
+    /**
+     * Valida que los campos no sean null ni esten vacios.
+     * 
+     * @return retorna true si los campos fueron validados.
+     */
     private boolean validarCampos() {
-        return textFieldNombre != null || !textFieldNombre.getText().isBlank() ||
-                textFieldContrasenia != null || !textFieldContrasenia.getText().isBlank() ||
-                textFieldEmail != null || !textFieldEmail.getText().isBlank();
+        return textFieldNombre != null && textFieldNombre.getText() != null && !textFieldNombre.getText().isBlank() &&
+                textFieldContrasenia != null && textFieldContrasenia.getText() != null
+                && !textFieldContrasenia.getText().isBlank() &&
+                textFieldEmail != null && textFieldEmail.getText() != null && !textFieldEmail.getText().isBlank();
     }
 
+    /**
+     * Valida que el formato del email sea el correcto.
+     * 
+     * @return retorna true si el formato es correcto.
+     */
     private boolean validarEmail() {
         String patron = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(patron);

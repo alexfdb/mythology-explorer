@@ -1,9 +1,15 @@
 package com.mythologi_explorer.controller;
 
+import java.sql.SQLException;
+
 import com.mythologi_explorer.controller.pantalla.PantallaController;
+import com.mythologi_explorer.model.UsuarioManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * @author alexfdb
@@ -16,9 +22,28 @@ public class IniciarController extends PantallaController {
     @FXML
     private Button buttonUsuario;
     @FXML
+    private TextField textFieldNombre;
+    @FXML
+    private PasswordField passwordFieldContrasenia;
+    @FXML
+    private Text textMensaje;
+    @FXML
+    private Button buttonEnviar;
+    @FXML
     private Button buttonCrear;
     @FXML
     private Button buttonRecuperar;
+
+    private UsuarioManager uManager;
+
+    /**
+     * Constructor general.
+     * 
+     * @throws SQLException error controlado.
+     */
+    public IniciarController() throws SQLException {
+        this.uManager = new UsuarioManager();
+    }
 
     /**
      * Cambia a la pantalla de explorar.
@@ -37,6 +62,22 @@ public class IniciarController extends PantallaController {
     }
 
     /**
+     * Inicia sesion.
+     */
+    @FXML
+    public void buttonEnviarClick() {
+        if (!validarCampos()) {
+            textMensaje.setText("Credenciales null o vacias");
+            return;
+        }
+        if (!uManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText())) {
+            textMensaje.setText("Nombre o contraseña incorrectos");
+            return;
+        }
+        textMensaje.setText("Inicio de sesión exitoso.");
+    }
+
+    /**
      * Cambia a la pantalla de crear.
      */
     @FXML
@@ -50,6 +91,12 @@ public class IniciarController extends PantallaController {
     @FXML
     public void buttonRecuperarClick() {
         pantallaRecuperar(buttonRecuperar);
+    }
+
+    private boolean validarCampos() {
+        return textFieldNombre != null && textFieldNombre.getText() != null && !textFieldNombre.getText().isBlank() &&
+                passwordFieldContrasenia.getText() != null && passwordFieldContrasenia != null
+                && !passwordFieldContrasenia.getText().isBlank();
     }
 
 }

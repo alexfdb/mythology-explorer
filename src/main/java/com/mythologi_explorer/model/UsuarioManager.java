@@ -60,7 +60,7 @@ public class UsuarioManager extends DatabaseManager {
         try (PreparedStatement pStatement = conectar().prepareStatement(sql)) {
             pStatement.setString(1, usuario.getNombre());
             pStatement.setString(2, usuario.getContrasenia());
-            pStatement.setString(3, usuario.getContrasenia());
+            pStatement.setString(3, usuario.getEmail());
             int rowsAffected = pStatement.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
