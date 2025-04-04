@@ -1,11 +1,13 @@
 package com.mythologi_explorer.model;
+
 import java.util.Objects;
+
 /**
  * @author alexfdb
  * @version 1.0.0
  */
 public class Usuario {
-    
+
     private String nombre;
     private String contrasenia;
     private String email;
@@ -18,9 +20,10 @@ public class Usuario {
 
     /**
      * Constructor general.
-     * @param nombre nombre del usuario.
+     * 
+     * @param nombre      nombre del usuario.
      * @param contrasenia contrasenia del usuario.
-     * @param email email del usuario.
+     * @param email       email del usuario.
      */
     public Usuario(String nombre, String contrasenia, String email) {
         this.nombre = nombre;
