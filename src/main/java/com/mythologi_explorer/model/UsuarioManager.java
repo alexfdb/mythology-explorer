@@ -15,7 +15,7 @@ public class UsuarioManager extends DatabaseManager {
      * 
      * @throws SQLException error controlado.
      */
-    protected UsuarioManager() throws SQLException {
+    public UsuarioManager() throws SQLException {
         super();
     }
 
