@@ -1,8 +1,6 @@
 package com.mythologi_explorer.controller;
 
 import java.sql.SQLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.mythologi_explorer.controller.pantalla.PantallaController;
 import com.mythologi_explorer.model.UsuarioManager;
