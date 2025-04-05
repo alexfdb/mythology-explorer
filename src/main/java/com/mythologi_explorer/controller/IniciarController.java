@@ -93,6 +93,11 @@ public class IniciarController extends PantallaController {
         pantallaRecuperar(buttonRecuperar);
     }
 
+    /**
+     * Valida que los campos no sean null ni esten vacios.
+     * 
+     * @return retorna true si los campos son verificad.
+     */
     private boolean validarCampos() {
         return textFieldNombre != null && textFieldNombre.getText() != null && !textFieldNombre.getText().isBlank() &&
                 passwordFieldContrasenia.getText() != null && passwordFieldContrasenia != null

@@ -31,8 +31,8 @@ public class ExplorarController extends PantallaController {
      */
     @FXML
     public void buttonIdiomaClick() {
-    idiomaActual = idiomaActual.equals("es") ? "en" : "es";
-    cambiarIdioma();
+        idiomaActual = idiomaActual.equals("es") ? "en" : "es";
+        cambiarIdioma();
     }
 
     /**
@@ -43,12 +43,15 @@ public class ExplorarController extends PantallaController {
         pantallaIniciar(buttonUsuario);
     }
 
+    /**
+     * Cambia el idioma de la aplicacion.
+     */
     private void cambiarIdioma() {
         String path = "src/main/resources/view/idioma/" + idiomaActual + ".properties";
         IdiomaController.ConfigProperties.setPath(path);
-            textExplorar.setText(IdiomaController.ConfigProperties.getProperties("textExplorar"));
-            textSumeria.setText(IdiomaController.ConfigProperties.getProperties("textSumeria"));
-            textEgipcia.setText(IdiomaController.ConfigProperties.getProperties("textEgipcia"));
+        textExplorar.setText(IdiomaController.ConfigProperties.getProperties("textExplorar"));
+        textSumeria.setText(IdiomaController.ConfigProperties.getProperties("textSumeria"));
+        textEgipcia.setText(IdiomaController.ConfigProperties.getProperties("textEgipcia"));
     }
 
 }

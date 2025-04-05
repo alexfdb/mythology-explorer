@@ -33,6 +33,7 @@ public class RecuperarController extends PantallaController {
 
     /**
      * Constructor general.
+     * 
      * @throws SQLException error controlado.
      */
     public RecuperarController() throws SQLException {
@@ -60,11 +61,11 @@ public class RecuperarController extends PantallaController {
      */
     @FXML
     public void buttonEnviarClick() {
-        if(!validarCampos()) {
+        if (!validarCampos()) {
             textMensaje.setText("Credenciales null o vacias");
             return;
         }
-        if(!uManager.recuperarCuenta(textFieldNombre.getText(), textFieldEmail.getText())) {
+        if (!uManager.recuperarCuenta(textFieldNombre.getText(), textFieldEmail.getText())) {
             textMensaje.setText("Credenciales incorrectas.");
             return;
         }

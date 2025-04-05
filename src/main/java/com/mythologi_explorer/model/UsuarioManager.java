@@ -52,12 +52,13 @@ public class UsuarioManager extends DatabaseManager {
 
     /**
      * Comprueba si el usuario ya existe.
+     * 
      * @param nombre nombre del usuario.
-     * @param email email del usuario.
+     * @param email  email del usuario.
      * @return retorna true si el usuario existe.
      */
     public boolean usuarioExistente(String nombre, String email) {
-        if(nombre == null || email == null) {
+        if (nombre == null || email == null) {
             return false;
         }
         String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? email ?";
