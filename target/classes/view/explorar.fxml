@@ -10,30 +10,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mythologi_explorer.controller.ExplorarController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mythologi_explorer.controller.ExplorarController">
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="buttonExplorar" mnemonicParsing="false" onAction="#buttonExplorarClick" prefHeight="50.0" prefWidth="50.0">
+            <Button fx:id="buttonIdioma" mnemonicParsing="false" onAction="#buttonIdiomaClick" prefHeight="50.0" prefWidth="50.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/explorar.png" />
+                        <Image url="@img/language.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
             <VBox alignment="CENTER" prefHeight="50.0" prefWidth="180.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Explorar">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mitologias">
+                  <Text fx:id="textExplorar" strokeType="OUTSIDE" strokeWidth="0.0" text="Explorar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -58,7 +53,7 @@
             <Insets top="20.0" />
          </VBox.margin>
       </Separator>
-      <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Mesopotámica" textAlignment="CENTER">
+      <Text fx:id="textSumeria" fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Sumeria" textAlignment="CENTER">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
@@ -78,7 +73,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Egipcia">
+      <Text fx:id="textEgipcia" fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" text="Egipcia">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
