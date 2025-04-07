@@ -1,4 +1,4 @@
-package com.mythologi_explorer.model;
+package com.mythologi.explorer.model;
 
 import java.util.Objects;
 

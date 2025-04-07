@@ -1,12 +1,12 @@
-package com.mythologi_explorer.controller;
+package com.mythologi.explorer.controller;
 
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mythologi_explorer.controller.pantalla.PantallaController;
-import com.mythologi_explorer.model.Usuario;
-import com.mythologi_explorer.model.UsuarioManager;
+import com.mythologi.explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.model.Usuario;
+import com.mythologi.explorer.model.UsuarioManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

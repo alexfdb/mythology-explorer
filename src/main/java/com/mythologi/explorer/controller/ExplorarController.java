@@ -1,7 +1,7 @@
-package com.mythologi_explorer.controller;
+package com.mythologi.explorer.controller;
 
-import com.mythologi_explorer.controller.idioma.IdiomaController;
-import com.mythologi_explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.controller.idioma.IdiomaController;
+import com.mythologi.explorer.controller.pantalla.PantallaController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

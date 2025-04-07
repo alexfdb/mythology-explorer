@@ -1,13 +1,12 @@
-package com.mythologi_explorer.controller;
+package com.mythologi.explorer.controller;
 
 import java.sql.SQLException;
 
-import com.mythologi_explorer.controller.pantalla.PantallaController;
-import com.mythologi_explorer.model.UsuarioManager;
+import com.mythologi.explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.model.UsuarioManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -15,7 +14,7 @@ import javafx.scene.text.Text;
  * @author alexfdb
  * @version 1.0.0
  */
-public class IniciarController extends PantallaController {
+public class RecuperarController extends PantallaController {
 
     @FXML
     private Button buttonExplorar;
@@ -24,15 +23,11 @@ public class IniciarController extends PantallaController {
     @FXML
     private TextField textFieldNombre;
     @FXML
-    private PasswordField passwordFieldContrasenia;
+    private TextField textFieldEmail;
     @FXML
     private Text textMensaje;
     @FXML
     private Button buttonEnviar;
-    @FXML
-    private Button buttonCrear;
-    @FXML
-    private Button buttonRecuperar;
 
     private UsuarioManager uManager;
 
@@ -41,7 +36,7 @@ public class IniciarController extends PantallaController {
      * 
      * @throws SQLException error controlado.
      */
-    public IniciarController() throws SQLException {
+    public RecuperarController() throws SQLException {
         this.uManager = new UsuarioManager();
     }
 
@@ -62,7 +57,7 @@ public class IniciarController extends PantallaController {
     }
 
     /**
-     * Inicia sesion.
+     * Recuperacion de cuenta.
      */
     @FXML
     public void buttonEnviarClick() {
@@ -70,38 +65,21 @@ public class IniciarController extends PantallaController {
             textMensaje.setText("Credenciales null o vacias");
             return;
         }
-        if (!uManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText())) {
-            textMensaje.setText("Credenciales incorrectas");
+        if (!uManager.recuperarCuenta(textFieldNombre.getText(), textFieldEmail.getText())) {
+            textMensaje.setText("Credenciales incorrectas.");
             return;
         }
         textMensaje.setText("Credenciales correctas");
     }
 
     /**
-     * Cambia a la pantalla de crear.
-     */
-    @FXML
-    public void buttonCrearClick() {
-        pantallaCrear(buttonCrear);
-    }
-
-    /**
-     * Cambia a la pantalla de recuperar.
-     */
-    @FXML
-    public void buttonRecuperarClick() {
-        pantallaRecuperar(buttonRecuperar);
-    }
-
-    /**
      * Valida que los campos no sean null ni esten vacios.
      * 
-     * @return retorna true si los campos son verificad.
+     * @return retorna true si los campos fueron validados.
      */
     private boolean validarCampos() {
         return textFieldNombre != null && textFieldNombre.getText() != null && !textFieldNombre.getText().isBlank() &&
-                passwordFieldContrasenia.getText() != null && passwordFieldContrasenia != null
-                && !passwordFieldContrasenia.getText().isBlank();
+                textFieldEmail != null && textFieldEmail.getText() != null && !textFieldEmail.getText().isBlank();
     }
 
 }

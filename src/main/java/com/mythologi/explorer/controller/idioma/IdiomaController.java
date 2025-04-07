@@ -1,4 +1,4 @@
-package com.mythologi_explorer.controller.idioma;
+package com.mythologi.explorer.controller.idioma;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

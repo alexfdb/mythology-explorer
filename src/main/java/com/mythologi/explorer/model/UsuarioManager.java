@@ -1,10 +1,10 @@
-package com.mythologi_explorer.model;
+package com.mythologi.explorer.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mythologi_explorer.model.database.DatabaseManager;
+import com.mythologi.explorer.model.database.DatabaseManager;
 
 /**
  * @author alexfdb

@@ -1,6 +1,6 @@
-package com.mythologi_explorer.controller.pantalla;
+package com.mythologi.explorer.controller.pantalla;
 
-import com.mythologi_explorer.Main;
+import com.mythologi.explorer.Main;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

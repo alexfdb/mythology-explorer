@@ -1,4 +1,4 @@
-package com.mythologi_explorer.model.database;
+package com.mythologi.explorer.model.database;
 
 import java.io.File;
 import java.sql.Connection;

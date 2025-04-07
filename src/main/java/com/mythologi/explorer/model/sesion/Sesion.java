@@ -1,6 +1,6 @@
-package com.mythologi_explorer.model.sesion;
+package com.mythologi.explorer.model.sesion;
 
-import com.mythologi_explorer.model.Usuario;
+import com.mythologi.explorer.model.Usuario;
 
 /**
  * @author alexfdb

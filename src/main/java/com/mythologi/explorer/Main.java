@@ -1,4 +1,4 @@
-package com.mythologi_explorer;
+package com.mythologi.explorer;
 
 import java.io.IOException;
 
