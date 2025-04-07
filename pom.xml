@@ -85,7 +85,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>es.ies.puerto.PrincipalApplication</mainClass>
+                    <mainClass>com.mythologi.explorer.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
