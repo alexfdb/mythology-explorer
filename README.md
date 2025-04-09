@@ -13,7 +13,7 @@ La audiencia principal de esta aplicación incluye estudiantes, educadores y ent
 ![Wireframe Inicial](ruta/a/tu/wireframe.png)
 *Wireframe inicial diseñado en Figma.*
 
-![Diseño Final]([ruta/a/tu/diseño_final.png]https://github.com/alexfdb/mythology-explorer/blob/main/images/mookups.drawio.png)
+![Diseño Final](https://github.com/alexfdb/mythology-explorer/blob/main/images/mookups.drawio.png)
 *Captura de pantalla del diseño final implementado. Se han realizado cambios clave en la navegación y la presentación de la información para mejorar la experiencia del usuario.*
 
 ## Tecnologías usadas
