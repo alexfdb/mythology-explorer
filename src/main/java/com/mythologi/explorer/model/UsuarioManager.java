@@ -61,7 +61,7 @@ public class UsuarioManager extends DatabaseManager {
         if (nombre == null || email == null) {
             return false;
         }
-        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? email ?";
+        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? AND email ?";
         try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, email);

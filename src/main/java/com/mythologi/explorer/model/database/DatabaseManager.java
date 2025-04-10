@@ -13,7 +13,6 @@ public abstract class DatabaseManager {
 
     private String databasePath;
     private File file;
-    private Connection connection;
 
     /**
      * Constructor general.
@@ -37,15 +36,8 @@ public abstract class DatabaseManager {
      * 
      * @return retorna la conexion a la base de datos.
      */
-    protected Connection conectar() {
-        try {
-            if (connection == null) {
-                connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return this.connection;
+    protected Connection conectar() throws SQLException {
+        return DriverManager.getConnection("jdbc:sqlite:" + databasePath);
     }
 
 }
