@@ -11,8 +11,8 @@ import java.sql.SQLException;
  */
 public abstract class DatabaseManager {
 
-    private String databasePath;
-    private File file;
+    private static final String DATABASE_PATH = "src/main/resources/view/data.db";
+    private static final File FILE = new File(DATABASE_PATH);
 
     /**
      * Constructor general.
@@ -20,24 +20,19 @@ public abstract class DatabaseManager {
      * @throws SQLException error controlado.
      */
     protected DatabaseManager() throws SQLException {
-        databasePath = "src/main/resources/view/data.db";
-        file = new File(databasePath);
-        try {
-            if (!file.exists()) {
-                throw new SQLException("No existe la base de datos: " + databasePath);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!FILE.exists()) {
+            throw new SQLException("No existe la base de datos: " + DATABASE_PATH);
         }
     }
 
     /**
-     * Abre la conexion a la base de datos.
+     * Crea una conexion con la base de datos.
      * 
-     * @return retorna la conexion a la base de datos.
+     * @return retorna la conexion con la base de datos.
+     * @throws SQLException error controlado.
      */
     protected Connection conectar() throws SQLException {
-        return DriverManager.getConnection("jdbc:sqlite:" + databasePath);
+        return DriverManager.getConnection("jdbc:sqlite:" + DATABASE_PATH);
     }
 
 }

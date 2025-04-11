@@ -22,35 +22,6 @@ public class UsuarioManager extends DatabaseManager {
     }
 
     /**
-     * Obtiene un usuario a partir de una consulta.
-     * 
-     * @param query consulta de sql.
-     * @return retorna el usuario si la consulta tiene exito.
-     * @throws SQLException error controlado.
-     */
-    /**
-     * private Usuario obtenerUsuario(String query) throws SQLException {
-     * Usuario usuario = null;
-     * if (query == null) {
-     * return null;
-     * }
-     * try (PreparedStatement pStatement = conectar().prepareStatement(query);
-     * ResultSet rSet = pStatement.executeQuery();) {
-     * 
-     * if (rSet.next()) {
-     * String nombre = rSet.getString("nombre");
-     * String contrasenia = rSet.getString("contrasenia");
-     * String email = rSet.getString("email");
-     * usuario = new Usuario(nombre, contrasenia, email);
-     * }
-     * } catch (Exception e) {
-     * e.printStackTrace();
-     * }
-     * return usuario;
-     * }
-     */
-
-    /**
      * Comprueba si el usuario ya existe.
      * 
      * @param nombre nombre del usuario.
@@ -61,7 +32,7 @@ public class UsuarioManager extends DatabaseManager {
         if (nombre == null || email == null) {
             return false;
         }
-        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? AND email ?";
+        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? AND email = ?";
         try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, email);
@@ -126,7 +97,7 @@ public class UsuarioManager extends DatabaseManager {
      * 
      * @param nombre nombre del usuario.
      * @param email  email del usuario.
-     * @return
+     * @return retorna true si se envio la recuperacion de cuenta.
      */
     public boolean recuperarCuenta(String nombre, String email) {
         if (nombre == null || email == null) {
