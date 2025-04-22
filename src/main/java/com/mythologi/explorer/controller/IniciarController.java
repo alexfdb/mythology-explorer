@@ -1,9 +1,9 @@
 package com.mythologi.explorer.controller;
 
-import java.sql.SQLException;
-
 import com.mythologi.explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.model.Usuario;
 import com.mythologi.explorer.model.UsuarioManager;
+import com.mythologi.explorer.model.sesion.Sesion;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,17 +34,6 @@ public class IniciarController extends PantallaController {
     @FXML
     private Button buttonRecuperar;
 
-    private UsuarioManager uManager;
-
-    /**
-     * Constructor general.
-     * 
-     * @throws SQLException error controlado.
-     */
-    public IniciarController() throws SQLException {
-        this.uManager = new UsuarioManager();
-    }
-
     /**
      * Cambia a la pantalla de explorar.
      */
@@ -58,7 +47,9 @@ public class IniciarController extends PantallaController {
      */
     @FXML
     public void buttonUsuarioClick() {
-        pantallaIniciar(buttonUsuario);
+        if(Sesion.getUsuarioActual() !=null) {
+            pantallaPerfil(buttonUsuario);
+        }
     }
 
     /**
@@ -70,11 +61,15 @@ public class IniciarController extends PantallaController {
             textMensaje.setText("Credenciales null o vacias");
             return;
         }
-        if (!uManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText())) {
+        UsuarioManager usuarioManager = new UsuarioManager();
+        Usuario usuario = usuarioManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText());
+        if (usuario == null) {
             textMensaje.setText("Credenciales incorrectas");
             return;
         }
-        textMensaje.setText("Credenciales correctas");
+        Sesion.iniciarSesion(usuario);
+        textMensaje.setText("");
+        pantallaPerfil(buttonEnviar);
     }
 
     /**

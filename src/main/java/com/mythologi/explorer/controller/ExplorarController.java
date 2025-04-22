@@ -2,6 +2,7 @@ package com.mythologi.explorer.controller;
 
 import com.mythologi.explorer.controller.idioma.IdiomaController;
 import com.mythologi.explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.model.sesion.Sesion;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,7 +41,11 @@ public class ExplorarController extends PantallaController {
      */
     @FXML
     public void buttonUsuarioClick() {
-        pantallaIniciar(buttonUsuario);
+        if(Sesion.getUsuarioActual() == null) {
+            pantallaIniciar(buttonUsuario);
+            return;
+        }
+        pantallaPerfil(buttonUsuario);
     }
 
     /**

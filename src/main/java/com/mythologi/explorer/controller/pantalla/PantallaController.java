@@ -67,4 +67,13 @@ public abstract class PantallaController {
         cambiarPantalla(button, "/view/recuperar.fxml");
     }
 
+    /**
+     * Cambiar a la pantalla perfil.
+     * 
+     * @param button boton que ejecuta la pantalla.
+     */
+    protected void pantallaPerfil(Button button) {
+        cambiarPantalla(button, "/view/perfil.fxml");
+    }
+
 }

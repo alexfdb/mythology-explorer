@@ -8,7 +8,7 @@ import com.mythologi.explorer.model.Usuario;
  */
 public class Sesion {
 
-    private static Usuario usuarioActual;
+    private static Usuario usuarioActual = null;
 
     /**
      * Constructor privado.
@@ -39,15 +39,6 @@ public class Sesion {
      */
     public static Usuario getUsuarioActual() {
         return usuarioActual;
-    }
-
-    /**
-     * Comprueba que la sesion esta inciada.
-     * 
-     * @return retorna true si la sesion esta iniciada.
-     */
-    public static boolean sesionIniciada() {
-        return usuarioActual != null;
     }
 
 }

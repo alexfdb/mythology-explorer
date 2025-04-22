@@ -19,9 +19,13 @@ public abstract class DatabaseManager {
      * 
      * @throws SQLException error controlado.
      */
-    protected DatabaseManager() throws SQLException {
-        if (!FILE.exists()) {
-            throw new SQLException("No existe la base de datos: " + DATABASE_PATH);
+    protected DatabaseManager() {
+        try {
+            if (!FILE.exists()) {
+                throw new SQLException("No existe la base de datos: " + DATABASE_PATH);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

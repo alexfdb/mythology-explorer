@@ -17,7 +17,7 @@ public class UsuarioManager extends DatabaseManager {
      * 
      * @throws SQLException error controlado.
      */
-    public UsuarioManager() throws SQLException {
+    public UsuarioManager() {
         super();
     }
 
@@ -75,21 +75,26 @@ public class UsuarioManager extends DatabaseManager {
      * @param contrasenia contrasenia del usuario.
      * @return retorna true si el usuario inicio con exito.
      */
-    public boolean iniciarSesion(String nombre, String contrasenia) {
+    public Usuario iniciarSesion(String nombre, String contrasenia) {
         if (nombre == null || contrasenia == null) {
-            return false;
+            return null;
         }
-        String query = "SELECT id FROM usuario WHERE nombre = ? AND contrasenia = ?";
+        String query = "SELECT nombre, contrasenia, email FROM usuario WHERE nombre = ? AND contrasenia = ?";
         try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
             pStatement.setString(1, nombre);
             pStatement.setString(2, contrasenia);
-            try (ResultSet rSet = pStatement.executeQuery()) {
-                return rSet.next();
+            try (ResultSet resultSet = pStatement.executeQuery()) {
+                if(resultSet.next()) {
+                    String nombreStr = resultSet.getString("nombre");
+                    String contraseniaStr = resultSet.getString("contrasenia");
+                    String emailStr = resultSet.getString("email");
+                    return new Usuario(nombreStr, contraseniaStr, emailStr);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
