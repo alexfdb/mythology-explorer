@@ -1,8 +1,7 @@
 package com.mythologi.explorer.controller;
 
-import java.sql.SQLException;
-
 import com.mythologi.explorer.controller.pantalla.PantallaController;
+import com.mythologi.explorer.model.Usuario;
 import com.mythologi.explorer.model.UsuarioManager;
 
 import javafx.fxml.FXML;
@@ -29,17 +28,6 @@ public class RecuperarController extends PantallaController {
     @FXML
     private Button buttonEnviar;
 
-    private UsuarioManager uManager;
-
-    /**
-     * Constructor general.
-     * 
-     * @throws SQLException error controlado.
-     */
-    public RecuperarController() throws SQLException {
-        this.uManager = new UsuarioManager();
-    }
-
     /**
      * Cambia a la pantalla de explorar.
      */
@@ -65,7 +53,9 @@ public class RecuperarController extends PantallaController {
             textMensaje.setText("Credenciales null o vacias");
             return;
         }
-        if (!uManager.recuperarCuenta(textFieldNombre.getText(), textFieldEmail.getText())) {
+        UsuarioManager usuarioManager = new UsuarioManager();
+        Usuario usuario = usuarioManager.buscarPorNombreYEmail(textFieldNombre.getText(), textFieldEmail.getText());
+        if (usuario == null) {
             textMensaje.setText("Credenciales incorrectas.");
             return;
         }

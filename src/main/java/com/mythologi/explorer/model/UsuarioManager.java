@@ -1,5 +1,6 @@
 package com.mythologi.explorer.model;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,30 +23,6 @@ public class UsuarioManager extends DatabaseManager {
     }
 
     /**
-     * Comprueba si el usuario ya existe.
-     * 
-     * @param nombre nombre del usuario.
-     * @param email  email del usuario.
-     * @return retorna true si el usuario existe.
-     */
-    public boolean usuarioExistente(String nombre, String email) {
-        if (nombre == null || email == null) {
-            return false;
-        }
-        String query = "SELECT COUNT(id) FROM usuario WHERE nombre = ? AND email = ?";
-        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
-            pStatement.setString(1, nombre);
-            pStatement.setString(2, email);
-            try (ResultSet rSet = pStatement.executeQuery()) {
-                return rSet.next();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    /**
      * Crea un usuario.
      * 
      * @param usuario usuario a crear.
@@ -56,7 +33,8 @@ public class UsuarioManager extends DatabaseManager {
             return false;
         }
         String query = "INSERT INTO usuario(nombre, contrasenia, email) VALUES (?, ?, ?)";
-        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
+        try (Connection connection = conectar();
+                PreparedStatement pStatement = connection.prepareStatement(query)) {
             pStatement.setString(1, usuario.getNombre());
             pStatement.setString(2, usuario.getContrasenia());
             pStatement.setString(3, usuario.getEmail());
@@ -69,22 +47,17 @@ public class UsuarioManager extends DatabaseManager {
     }
 
     /**
-     * Inicia la sesion del usuario.
+     * Buscar un usuario.
      * 
-     * @param nombre      nombre del usuario.
-     * @param contrasenia contrasenia del usuario.
-     * @return retorna true si el usuario inicio con exito.
+     * @param where where de la consulta sql.
+     * @return retorna el usuario de la base de datos.
      */
-    public Usuario iniciarSesion(String nombre, String contrasenia) {
-        if (nombre == null || contrasenia == null) {
-            return null;
-        }
-        String query = "SELECT nombre, contrasenia, email FROM usuario WHERE nombre = ? AND contrasenia = ?";
-        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
-            pStatement.setString(1, nombre);
-            pStatement.setString(2, contrasenia);
-            try (ResultSet resultSet = pStatement.executeQuery()) {
-                if(resultSet.next()) {
+    private Usuario buscarUsuario(String where) {
+        String query = "SELECT nombre, contrasenia, email FROM usuario ";
+        try (Connection connection = conectar();
+                PreparedStatement preparedStatement = connection.prepareStatement(query + where)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
                     String nombreStr = resultSet.getString("nombre");
                     String contraseniaStr = resultSet.getString("contrasenia");
                     String emailStr = resultSet.getString("email");
@@ -98,27 +71,27 @@ public class UsuarioManager extends DatabaseManager {
     }
 
     /**
-     * Recupera la cuenta del usuario.
+     * Busca un usuario por su nombre y contrasenia.
+     * 
+     * @param nombre      nombre del usuario.
+     * @param contrasenia contrasenia del usuario.
+     * @return retorna el usuario de la base de datos.
+     */
+    public Usuario buscarPorNombreYContrasenia(String nombre, String contrasenia) {
+        String where = "WHERE nombre = '" + nombre + "' AND contrasenia = '" + contrasenia + "'";
+        return buscarUsuario(where);
+    }
+
+    /**
+     * Busca un usuario por su email.
      * 
      * @param nombre nombre del usuario.
      * @param email  email del usuario.
-     * @return retorna true si se envio la recuperacion de cuenta.
+     * @return retorna el usuario de la base de datos.
      */
-    public boolean recuperarCuenta(String nombre, String email) {
-        if (nombre == null || email == null) {
-            return false;
-        }
-        String query = "SELECT id FROM usuario WHERE nombre = ? AND email = ?";
-        try (PreparedStatement pStatement = conectar().prepareStatement(query)) {
-            pStatement.setString(1, nombre);
-            pStatement.setString(2, email);
-            try (ResultSet rSet = pStatement.executeQuery()) {
-                return rSet.next();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
+    public Usuario buscarPorNombreYEmail(String nombre, String email) {
+        String where = "WHERE nombre = '" + nombre + "' AND email = '" + email + "'";
+        return buscarUsuario(where);
     }
 
 }

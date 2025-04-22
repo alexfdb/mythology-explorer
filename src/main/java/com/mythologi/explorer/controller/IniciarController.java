@@ -62,7 +62,7 @@ public class IniciarController extends PantallaController {
             return;
         }
         UsuarioManager usuarioManager = new UsuarioManager();
-        Usuario usuario = usuarioManager.iniciarSesion(textFieldNombre.getText(), passwordFieldContrasenia.getText());
+        Usuario usuario = usuarioManager.buscarPorNombreYContrasenia(textFieldNombre.getText(), passwordFieldContrasenia.getText());
         if (usuario == null) {
             textMensaje.setText("Credenciales incorrectas");
             return;
