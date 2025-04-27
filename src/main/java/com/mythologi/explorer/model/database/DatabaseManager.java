@@ -35,7 +35,7 @@ public abstract class DatabaseManager {
      * @return retorna la conexion con la base de datos.
      * @throws SQLException error controlado.
      */
-    protected Connection conectar() throws SQLException {
+    public Connection conectar() throws SQLException {
         return DriverManager.getConnection("jdbc:sqlite:" + DATABASE_PATH);
     }
 

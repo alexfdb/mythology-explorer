@@ -1,1 +1,14 @@
+com\mythologi\explorer\controller\RecuperarController.class
+com\mythologi\explorer\controller\CrearController.class
+com\mythologi\explorer\model\UsuarioManager.class
+com\mythologi\explorer\model\Usuario.class
+com\mythologi\explorer\controller\IniciarController.class
+com\mythologi\explorer\controller\PerfilController.class
+com\mythologi\explorer\controller\pantalla\PantallaController.class
 module-info.class
+com\mythologi\explorer\controller\idioma\IdiomaController$ConfigProperties.class
+com\mythologi\explorer\Main.class
+com\mythologi\explorer\model\sesion\Sesion.class
+com\mythologi\explorer\controller\idioma\IdiomaController.class
+com\mythologi\explorer\model\database\DatabaseManager.class
+com\mythologi\explorer\controller\ExplorarController.class
