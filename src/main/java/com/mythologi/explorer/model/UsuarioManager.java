@@ -19,7 +19,7 @@ public class UsuarioManager extends DatabaseManager {
      * @throws SQLException error controlado.
      */
     public UsuarioManager() {
-        super();
+        super("src/main/resources/db/data.db");
     }
 
     /**
@@ -29,9 +29,6 @@ public class UsuarioManager extends DatabaseManager {
      * @return retorna true si el usuario fue creado.
      */
     public boolean crearUsuario(Usuario usuario) {
-        if(validarUsuario(usuario) == false) {
-            return false;
-        }
         String query = "INSERT INTO usuario(nombre, contrasenia, email) VALUES (?, ?, ?)";
         try (Connection connection = conectar();
                 PreparedStatement preparedStatment = connection.prepareStatement(query)) {
@@ -44,40 +41,43 @@ public class UsuarioManager extends DatabaseManager {
             return false;
         }
     }
-
+    
     /**
-     * Elimina un usuario.
+     * Buscar un usuario por su nombre y su contrasenia.
      * 
-     * @param usuario usuario a eliminar.
-     * @return retorna true si el usuario fue eliminado.
+     * @return retorna el usuario de la base de datos.
      */
-    public boolean eliminarUsuario(Usuario usuario) {
-        if(validarUsuario(usuario) == false) {
-            return false;
-        }
-        String query = "DELETE FROM usuario WHERE nombre = ? AND contrasenia = ? AND email = ?";
+    public Usuario buscarUsuarioPorNombreYContrasenia(String nombre, String contrasenia) {
+        String query = "SELECT nombre, contrasenia, email FROM usuario WHERE nombre = ? AND contrasenia = ?";
         try (Connection connection = conectar();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, usuario.getNombre());
-            preparedStatement.setString(2, usuario.getContrasenia());
-            preparedStatement.setString(3, usuario.getEmail());
-            return preparedStatement.executeUpdate() > 0;
+                    preparedStatement.setString(1, nombre);
+                    preparedStatement.setString(2, contrasenia);
+                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                        if (resultSet.next()) {
+                    String nombreStr = resultSet.getString("nombre");
+                    String contraseniaStr = resultSet.getString("contrasenia");
+                    String emailStr = resultSet.getString("email");
+                    return new Usuario(nombreStr, contraseniaStr, emailStr);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
-
+    
     /**
-     * Buscar un usuario.
+     * Buscar un usuario por su nombre y su email.
      * 
-     * @param where where de la consulta sql.
      * @return retorna el usuario de la base de datos.
      */
-    private Usuario buscarUsuario(String where) {
-        String selectFrom = "SELECT nombre, contrasenia, email FROM usuario ";
+    public Usuario buscarUsuarioPorEmail(String nombre, String email) {
+        String query = "SELECT nombre, contrasenia, email FROM usuario WHERE nombre = ? AND email = ?";
         try (Connection connection = conectar();
-                PreparedStatement preparedStatement = connection.prepareStatement(selectFrom + where)) {
+        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, email);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     String nombreStr = resultSet.getString("nombre");
@@ -93,48 +93,23 @@ public class UsuarioManager extends DatabaseManager {
     }
 
     /**
-     * Busca un usuario por su nombre y contrasenia.
+     * Elimina un usuario.
      * 
-     * @param nombre      nombre del usuario.
-     * @param contrasenia contrasenia del usuario.
-     * @return retorna el usuario de la base de datos.
+     * @param usuario usuario a eliminar.
+     * @return retorna true si el usuario fue eliminado.
      */
-    public Usuario buscarPorNombreYContrasenia(Usuario usuario) {
-        if(validarUsuario(usuario) == false) {
-            return null;
+    public boolean eliminarUsuario(Usuario usuario) {
+        String query = "DELETE FROM usuario WHERE nombre = ? AND contrasenia = ? AND email = ?";
+        try (Connection connection = conectar();
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, usuario.getNombre());
+            preparedStatement.setString(2, usuario.getContrasenia());
+            preparedStatement.setString(3, usuario.getEmail());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        String where = "WHERE nombre = '" + usuario.getNombre() + "' AND contrasenia = '" + usuario.getContrasenia() + "'";
-        return buscarUsuario(where);
+        return false;
     }
-
-    /**
-     * Busca un usuario por su email.
-     * 
-     * @param nombre nombre del usuario.
-     * @param email  email del usuario.
-     * @return retorna el usuario de la base de datos.
-     */
-    public Usuario buscarPorNombreYEmail(Usuario usuario) {
-        if(validarUsuario(usuario) == false) {
-            return null;
-        }
-        String where = "WHERE nombre = '" + usuario.getNombre() + "' AND email = '" + usuario.getEmail() + "'";
-        return buscarUsuario(where);
-    }
-
-    /**
-     * Validar usuario.
-     * @param usuario usuario a validar.
-     * @return retorna true si el usuario es valido.
-     */
-    private boolean validarUsuario(Usuario usuario) {
-        if (usuario == null ||
-                usuario.getNombre() == null || usuario.getNombre().isBlank() ||
-                usuario.getContrasenia() == null || usuario.getContrasenia().isBlank() ||
-                usuario.getEmail() == null || usuario.getEmail().isBlank()) {
-            return false;
-        }
-        return true;
-    }
-
+    
 }

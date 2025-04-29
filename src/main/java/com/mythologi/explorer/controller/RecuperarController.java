@@ -54,8 +54,7 @@ public class RecuperarController extends PantallaController {
             return;
         }
         UsuarioManager usuarioManager = new UsuarioManager();
-        Usuario usuario = new Usuario(textFieldNombre.getText(), null, textFieldEmail.getText());
-        Usuario usuarioDB = usuarioManager.buscarPorNombreYEmail(usuario);
+        Usuario usuarioDB = usuarioManager.buscarUsuarioPorEmail(textFieldNombre.getText(), textFieldEmail.getText());
         if (usuarioDB == null) {
             textMensaje.setText("Credenciales incorrectas.");
             return;

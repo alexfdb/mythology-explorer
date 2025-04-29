@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import com.mythologi.explorer.model.Usuario;
 
+/**
+ * @author alexfdb
+ * @version 1.0.0
+ */
 class UsuarioTest {
 
     @Test

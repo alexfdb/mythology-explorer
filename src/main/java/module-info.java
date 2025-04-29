@@ -12,4 +12,6 @@ module com.mythologi.explorer {
     opens com.mythologi.explorer to javafx.fxml;
     opens com.mythologi.explorer.model to javafx.fxml;
     opens com.mythologi.explorer.controller to javafx.fxml;
+
+    opens com.mythologi.explorer.model.database;
 }
