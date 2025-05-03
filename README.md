@@ -8,14 +8,6 @@ El Explorador de Mitologías es una aplicación diseñada para educar a los usua
 
 La audiencia principal de esta aplicación incluye estudiantes, educadores y entusiastas de la historia que buscan una forma interactiva de aprender sobre mitologías. Lo que hace única a esta aplicación es su enfoque en la interactividad y la visualización, permitiendo a los usuarios no solo leer sobre las deidades, sino también interactuar con el contenido de manera significativa.
 
-## Diseño
-
-![Wireframe Inicial](ruta/a/tu/wireframe.png)
-*Wireframe inicial diseñado en Figma.*
-
-![Diseño Final](https://github.com/alexfdb/mythology-explorer/blob/main/images/mookups.drawio.png)
-*Captura de pantalla del diseño final implementado. Se han realizado cambios clave en la navegación y la presentación de la información para mejorar la experiencia del usuario.*
-
 ## Tecnologías usadas
 
 - JavaFX
