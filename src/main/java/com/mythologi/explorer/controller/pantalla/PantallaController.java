@@ -76,4 +76,22 @@ public abstract class PantallaController {
         cambiarPantalla(button, "/view/perfil.fxml");
     }
 
+    /**
+     * Cambiar a la pantalla mitologia.
+     * 
+     * @param button boton que ejecuta la pantalla.
+     */
+    protected void pantallaMitologia(Button button) {
+        cambiarPantalla(button, "/view/mitologia.fxml");
+    }
+
+    /**
+     * Cambiar a la pantalla egipto.
+     * 
+     * @param button boton que ejecuta la pantalla.
+     */
+    protected void pantallaEgipto(Button button) {
+        cambiarPantalla(button, "/view/egipto.fxml");
+    }
+
 }

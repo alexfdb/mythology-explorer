@@ -19,6 +19,10 @@ public class ExplorarController extends PantallaController {
     @FXML
     private Button buttonUsuario;
     @FXML
+    private Button buttonMitologia;
+    @FXML
+    private Button buttonEgipto;
+    @FXML
     private Text textExplorar;
     @FXML
     private Text textSumeria;
@@ -57,6 +61,22 @@ public class ExplorarController extends PantallaController {
         textExplorar.setText(IdiomaController.ConfigProperties.getProperties("textExplorar"));
         textSumeria.setText(IdiomaController.ConfigProperties.getProperties("textSumeria"));
         textEgipcia.setText(IdiomaController.ConfigProperties.getProperties("textEgipcia"));
+    }
+
+    /**
+     * Cambia a la pantalla de mitologia.
+     */
+    @FXML
+    public void buttonMitologiaClick() {
+        pantallaMitologia(buttonMitologia);
+    }
+
+    /**
+     * Cambia a la pantalla de egipto.
+     */
+    @FXML
+    public void buttonEgiptoClick() {
+        pantallaEgipto(buttonEgipto);
     }
 
 }

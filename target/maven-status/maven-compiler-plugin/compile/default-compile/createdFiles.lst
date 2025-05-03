@@ -4,7 +4,9 @@ com\mythologi\explorer\model\UsuarioManager.class
 com\mythologi\explorer\model\Usuario.class
 com\mythologi\explorer\controller\IniciarController.class
 com\mythologi\explorer\controller\PerfilController.class
+com\mythologi\explorer\controller\MitologiaController.class
 com\mythologi\explorer\controller\pantalla\PantallaController.class
+com\mythologi\explorer\controller\EgiptoController.class
 module-info.class
 com\mythologi\explorer\controller\idioma\IdiomaController$ConfigProperties.class
 com\mythologi\explorer\Main.class

@@ -61,7 +61,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" textAlignment="CENTER">
+      <Button fx:id="buttonMitologia" mnemonicParsing="false" onAction="#buttonMitologiaClick" prefHeight="170.0" prefWidth="170.0" textAlignment="CENTER">
          <VBox.margin>
             <Insets bottom="20.0" top="10.0" />
          </VBox.margin>
@@ -81,7 +81,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" textAlignment="CENTER">
+      <Button fx:id="buttonEgipto" mnemonicParsing="false" onAction="#buttonEgiptoClick" prefHeight="170.0" prefWidth="170.0" textAlignment="CENTER">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
