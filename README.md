@@ -1,5 +1,7 @@
 # Mythology-Explorer
 
+![Logo](src/main/resources/img/logo.png)
+
 ## Aprende sobre las mitologías de Egipto y Sumeria
 
 ## Descripción del propósito
